@@ -2,6 +2,12 @@ import React from "react";
 import { Table } from "antd";
 
 class ContentTable extends React.Component{
+    componentDidMount() {
+        this.props.getTracksAll(1);
+        //console.log(this.props);
+        console.log(this.props);
+    }
+
     columns = [
         {
             title: 'ID',
@@ -20,22 +26,19 @@ class ContentTable extends React.Component{
         }
     ];
 
-    dataSource = [
-        {
-            id: 1,
-            track: 'Sonne',
-            artist: 'Rammstein'
-        },
-        {
-            id: 2,
-            track: 'Deutchland',
-            artist: 'Rammstein'
+    mappedDataSource = this.props.data.map(track => {
+        //console.log('track');
+        console.log(track);
+        return {
+            id: Math.random(),
+            track: track.name,
+            artist: track.artistName
         }
-    ];
+    });
 
     render() {
         return (
-            <Table dataSource={this.dataSource} columns={this.columns} />
+            <Table dataSource={this.mappedDataSource} columns={this.columns} />
         )
     }
 }

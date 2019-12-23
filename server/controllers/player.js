@@ -69,24 +69,25 @@ async function logout(req, res) {
 }
 
 async function getAudioTop(req, res) {
-    console.log(req.body);
+    console.log(req.headers);
+    console.log(` this is getaudio`);
     if(req.body.q) {
         lastfm.trackSearch({                // searching track according q - track name or artist name
-                q: req.body.q,
-                page: req.body.page,
+                q: req.query.q,
+                page: req.query.page,
                 perPage: PER_PAGE.TRACKS_PER_PAGE
             },
             (err, data) => {
                 if (err) console.error(err);
-                else res.send(data)
+                res.json(data)
             })
     } else {
         lastfm.chartTopTracks({
-                page: req.body.page,
+                page: req.query.page,
             },
             (err, data) => {
                 if (err) console.error(err);
-                else res.send(data)
+                res.json(data)
             });
     }
 }
