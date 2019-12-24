@@ -1,28 +1,21 @@
 import axios from 'axios';
-import {
-    GET_TRACKS_SUCCESS,
-    GET_TRACKS_PENDING
-} from '../constants/constants';
+import * as TYPES from './types';
+import { call, put } from 'redux-saga/effects';
 
-export const getTracksAll = (page, dispatch) => {
-    axios
-        .get('http://localhost:3001/api/users/', {
-            params: {
-                page
-            }
+const apiGetTracks = page => {
+    return axios.get('http://localhost:3001/api/users/', {
+        params: {
+            page
+        }
     })
-        .then((response) => {
-            //console.log(response);
-            dispatch(
-                {
-                type: GET_TRACKS_SUCCESS,
-                payload: {
-                    tracks: response.data
-                }
-            })
-        });
-    return {
-        type: GET_TRACKS_PENDING
-    }
+        .then(response => response.data)
 };
 
+export function* fetchGetTracks(action) {
+    try {
+        const tracks = yield call(apiGetTracks, action.page);
+        yield put({ type: TYPES.GET_TRACKS_SUCCESS, payload: tracks })
+    } catch (error) {
+        yield put({ type: TYPES.GET_TRACKS_FAILURE, payload: error })
+    }
+}

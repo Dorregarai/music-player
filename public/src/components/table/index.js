@@ -1,11 +1,9 @@
 import ContentTable from "./ContentTable";
-import {
-    getTracksAll
-} from "../../actions/playerAction";
+import * as TYPES from '../../actions/types';
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-    console.log(state);
+    console.log(state.playerReducer.data);
     return {
         data: state.playerReducer.data
     }
@@ -13,7 +11,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getTracksAll: page => dispatch(getTracksAll(page, dispatch))
+        getTracksAll: page => {
+            dispatch({
+                type: TYPES.GET_TRACKS_REQUEST,
+                page
+            })
+        }
     }
 }
 

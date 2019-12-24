@@ -4,7 +4,6 @@ import { Table } from "antd";
 class ContentTable extends React.Component{
     componentDidMount() {
         this.props.getTracksAll(1);
-        //console.log(this.props);
         console.log(this.props);
     }
 
