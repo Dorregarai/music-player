@@ -3,8 +3,7 @@ import { Table } from "antd";
 
 class ContentTable extends React.Component{
     componentDidMount() {
-        this.props.getTracksAll(1);
-        console.log(this.props);
+        setTimeout(this.props.getTracksAll(1), 5000);
     }
 
     columns = [
@@ -26,16 +25,15 @@ class ContentTable extends React.Component{
     ];
 
     mappedDataSource = this.props.data.map(track => {
-        //console.log('track');
-        console.log(track);
-        return {
+        return [{
             id: Math.random(),
             track: track.name,
             artist: track.artistName
-        }
+        }]
     });
 
     render() {
+        console.log(this.mappedDataSource);
         return (
             <Table dataSource={this.mappedDataSource} columns={this.columns} />
         )

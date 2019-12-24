@@ -3,7 +3,6 @@ import * as TYPES from '../../actions/types';
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-    console.log(state.playerReducer.data);
     return {
         data: state.playerReducer.data
     }
