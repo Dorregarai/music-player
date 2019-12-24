@@ -15,6 +15,11 @@ function mapDispatchToProps(dispatch) {
                 type: TYPES.GET_TRACKS_REQUEST,
                 page
             })
+        },
+        userLogIn: () => {
+            dispatch({
+                type: TYPES.POST_USER_LOG_REQUEST
+            })
         }
     }
 }

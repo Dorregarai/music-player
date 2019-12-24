@@ -69,8 +69,6 @@ async function logout(req, res) {
 }
 
 async function getAudioTop(req, res) {
-    console.log(req.headers);
-    console.log(` this is getaudio`);
     if(req.body.q) {
         lastfm.trackSearch({                // searching track according q - track name or artist name
                 q: req.query.q,

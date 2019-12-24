@@ -14,7 +14,6 @@ class LoginButtons extends React.Component {
         this.setState({
             isClicked: true
         });
-        console.log('clicked!');
     };
 
     renderLogin = () => {

@@ -1,4 +1,5 @@
 import React from "react";
+import Header from '../../components/header';
 import { Table } from "antd";
 
 class ContentTable extends React.Component{
@@ -8,34 +9,24 @@ class ContentTable extends React.Component{
 
     columns = [
         {
-            title: 'ID',
-            dataIndex: 'id',
-            key: 'id'
-        },
-        {
             title: 'Track',
-            dataIndex: 'track',
+            dataIndex: 'name',
             key: 'track'
         },
         {
             title: 'Artist',
-            dataIndex: 'artist',
+            dataIndex: 'artistName',
             key: 'artist'
         }
     ];
 
-    mappedDataSource = this.props.data.map(track => {
-        return [{
-            id: Math.random(),
-            track: track.name,
-            artist: track.artistName
-        }]
-    });
-
     render() {
-        console.log(this.mappedDataSource);
+        console.log(this.props);
         return (
-            <Table dataSource={this.mappedDataSource} columns={this.columns} />
+            <div>
+                <Header />
+                <Table dataSource={this.props.data} columns={this.columns} />
+            </div>
         )
     }
 }
