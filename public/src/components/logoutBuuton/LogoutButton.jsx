@@ -9,14 +9,16 @@ class LogoutButton extends React.Component {
         }
     }
 
-    isRender = () => {
-        if(this.state.isVisible) return (<Button type="primary" >Log out!</Button>)
+    LogoutButtonRender = () => {
+        if(this.state.isVisible) {
+            return (<Button type="primary">Log out!</Button>)
+        }
     };
 
     render() {
         return (
             <div>
-                {this.isRender()}
+                { this.LogoutButtonRender() }
             </div>
         )
     }

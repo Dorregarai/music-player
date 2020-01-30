@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from '../../components/header';
 import { Table } from "antd";
 
-class ContentTable extends React.Component{
-    componentDidMount() {
-        setTimeout(this.props.getTracksAll(1), 5000);
-    }
+export default function ContentTable(props) {
+    useEffect(() => {
+        props.getTracksAll(1)
+    });
 
-    columns = [
+    const columns = [
         {
             title: 'Track',
             dataIndex: 'name',
@@ -20,15 +20,11 @@ class ContentTable extends React.Component{
         }
     ];
 
-    render() {
-        console.log(this.props);
+        //console.log(props);
         return (
             <div>
                 <Header />
-                <Table dataSource={this.props.data} columns={this.columns} />
+                <Table dataSource={props.data} columns={columns} />
             </div>
         )
-    }
 }
-
-export default ContentTable

@@ -1,23 +1,18 @@
 import React from "react";
 import { PageHeader } from "antd";
-import LoginButtons from "../loginButtons";
-import LogoutButton from "../logoutBuuton";
+import LogButton from "../logButton-hooks";
 
-class Header extends React.Component {
-    render() {
-        return (
-            <div>
-                <PageHeader
-                    title="Main"
-                    subTitle="This is the main page"
-                    extra={[
-                        <LoginButtons />,
-                        <LogoutButton />
-                    ]}
-                />
-            </div>
-        )
-    }
+export default function Header() {
+    return (
+        <div>
+            <PageHeader
+                title="Main"
+                subTitle="This is the main page"
+                extra={[
+                    <LogButton type="primary" child="Log In" isVisible="true" />,
+                    <LogButton child="Sign In" isVisible="true" />,
+                ]}
+            />
+        </div>
+    )
 }
-
-export default Header;
